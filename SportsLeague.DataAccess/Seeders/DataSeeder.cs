@@ -43,19 +43,35 @@ public static class DataSeeder
         // ═══ 2. JUGADORES (4 por equipo = 80 total) ═══
         var playersData = new (string First, string Last, PlayerPosition Pos, int Number)[][]
         {
-            // 1. Atlético Nacional
+            // 1. Atlético Nacional (12 jugadores para demo de alineaciones)
             new[] {
-                ("David", "Ospina", PlayerPosition.Goalkeeper, 1),
-                ("William", "Tesillo", PlayerPosition.Defender, 3),
-                ("Edwin", "Cardona", PlayerPosition.Midfielder, 10),
-                ("Alfredo", "Morelos", PlayerPosition.Forward, 9),
+                ("David",     "Ospina",       PlayerPosition.Goalkeeper, 1),
+                ("Aldair",    "Quintana",     PlayerPosition.Goalkeeper, 23),
+                ("William",   "Tesillo",      PlayerPosition.Defender,   3),
+                ("Felipe",    "Aguilar",      PlayerPosition.Defender,   13),
+                ("Danovis",   "Banguero",     PlayerPosition.Defender,   17),
+                ("Andrés",    "Andrade",      PlayerPosition.Defender,   2),
+                ("Sebastián", "Gómez",        PlayerPosition.Midfielder, 6),
+                ("Jorman",    "Campuzano",    PlayerPosition.Midfielder, 16),
+                ("Baldomero", "Perlaza",      PlayerPosition.Midfielder, 5),
+                ("Jarlan",    "Barrera",      PlayerPosition.Midfielder, 7),
+                ("Alfredo",   "Morelos",      PlayerPosition.Forward,    9),
+                ("Edwin",     "Cardona",      PlayerPosition.Forward,    10),
             },
-            // 2. Independiente Medellín
+            // 2. Independiente Medellín (12 jugadores para demo de alineaciones)
             new[] {
-                ("Salvador", "Ichazo", PlayerPosition.Goalkeeper, 1),
-                ("Andrés", "Cadavid", PlayerPosition.Defender, 4),
-                ("Adrián", "Arregui", PlayerPosition.Midfielder, 5),
-                ("Luciano", "Pons", PlayerPosition.Forward, 9),
+                ("Salvador",  "Ichazo",       PlayerPosition.Goalkeeper, 1),
+                ("Harlen",    "Castillo",     PlayerPosition.Goalkeeper, 23),
+                ("Andrés",    "Cadavid",      PlayerPosition.Defender,   4),
+                ("Vladimir",  "Hernández",    PlayerPosition.Defender,   2),
+                ("Brayan",    "Fernández",    PlayerPosition.Defender,   3),
+                ("Didier",    "Moreno",       PlayerPosition.Defender,   13),
+                ("Adrián",    "Arregui",      PlayerPosition.Midfielder, 5),
+                ("Elías",     "Hernández",    PlayerPosition.Midfielder, 8),
+                ("Yerson",    "Candelo",      PlayerPosition.Midfielder, 7),
+                ("Diber",     "Cambindo",     PlayerPosition.Midfielder, 17),
+                ("Luciano",   "Pons",         PlayerPosition.Forward,    9),
+                ("Víctor",    "Moreno",       PlayerPosition.Forward,    11),
             },
             // 3. América de Cali
             new[] {
