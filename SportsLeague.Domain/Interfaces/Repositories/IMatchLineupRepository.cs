@@ -8,5 +8,6 @@ namespace SportsLeague.Domain.Interfaces.Repositories
         Task<IEnumerable<MatchLineup>> GetByMatchAndTeamAsync(int matchId, int teamId);
         Task<bool> ExistsByMatchAndPlayerAsync(int matchId, int playerId);
         Task<int> CountStartersByMatchAndTeamAsync(int matchId, int teamId);
+        Task<MatchLineup?> GetByMatchAndPlayerAsync(int matchId, int playerId);
     }
 }

@@ -89,13 +89,29 @@ namespace SportsLeague.Domain.Services
             return await _lineupRepository.GetByMatchAndTeamAsync(matchId, teamId);
         }
 
-        public async Task DeleteFromLineupAsync(int lineupId)
+        public async Task RemovePlayerFromLineupAsync(int matchId, int playerId)
         {
-            var exists = await _lineupRepository.ExistsAsync(lineupId);
-            if (!exists)
-                throw new KeyNotFoundException($"No se encontró el registro de alineación con ID {lineupId}");
+            // El partido debe existir
+            var match = await _matchRepository.GetByIdAsync(matchId);
+            if (match == null)
+                throw new KeyNotFoundException($"No se encontró el partido con ID {matchId}");
 
-            await _lineupRepository.DeleteAsync(lineupId);
+            // El jugador debe estar registrado en la alineación de ese partido
+            var lineupEntry = await _lineupRepository.GetByMatchAndPlayerAsync(matchId, playerId);
+            if (lineupEntry == null)
+                throw new KeyNotFoundException(
+                    $"El jugador con ID {playerId} no está en la alineación del partido {matchId}");
+
+            // Solo se puede modificar la alineación de partidos en estado Scheduled
+            if (match.Status != MatchStatus.Scheduled)
+                throw new InvalidOperationException(
+                    "Solo se pueden modificar alineaciones en partidos Scheduled");
+
+            _logger.LogInformation(
+                "Removing player {PlayerId} from lineup of match {MatchId}",
+                playerId, matchId);
+
+            await _lineupRepository.DeleteAsync(lineupEntry.Id);
         }
     }
 }

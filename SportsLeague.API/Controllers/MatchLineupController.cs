@@ -75,18 +75,22 @@ namespace SportsLeague.API.Controllers
             }
         }
 
-        // DELETE /api/match/{matchId}/lineup/{id}
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteFromLineup(int matchId, int id)
+        // DELETE /api/match/{matchId}/lineup/{playerId}
+        [HttpDelete("{playerId}")]
+        public async Task<ActionResult> RemovePlayerFromLineup(int matchId, int playerId)
         {
             try
             {
-                await _lineupService.DeleteFromLineupAsync(id);
+                await _lineupService.RemovePlayerFromLineupAsync(matchId, playerId);
                 return NoContent();
             }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(new { message = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(new { message = ex.Message });
             }
         }
     }
